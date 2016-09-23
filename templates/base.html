@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <title>{% block title %}Persons{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" crossorigin="anonymous">
+    <style type="text/css">
+        #messages {
+            margin: 10px 0;
+        }
+        #messages li {
+          list-style: none;
+        }
+
+        #messages h3 {
+            margin-top: 0;
+        }
+    </style>
     {% block extra_style %}{% endblock %}
 </head>
 <body>
@@ -22,6 +34,15 @@
         </nav>
         <h3 class="text-muted">Persons CRUD</h3>
     </div>
+
+    {% if messages %}
+        <ul id="messages" class="clearfix">
+            {% for message in messages %}
+            <li{% if message.tags %} class="col-md-6 col-md-offset-3 text-center alert alert-{{ message.tags }}"{% endif %}>
+                <h3>{{ message|safe }}</h3></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
     {% block content %}{% endblock %}
 </div>

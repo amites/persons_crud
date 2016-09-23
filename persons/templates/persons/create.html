@@ -5,6 +5,9 @@
         <table>
             {{ form }}
         </table>
+        {% if person_id %}
+            <input type="hidden" name="person_id" value="{{ person_id }}"/>
+        {% endif %}
         <input type="submit" value="Save">
         {% csrf_token %}
     </form>
