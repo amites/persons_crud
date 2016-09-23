@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'persons/base.html' %}
 
 {% block content %}
 {#        div.row*2>div.col-sm-3*4#}
@@ -6,14 +6,82 @@
         <div class="col-sm-3">First Name</div>
         <div class="col-sm-3">Last Name</div>
         <div class="col-sm-3">Date of Birth</div>
-        <div class="col-sm-3">Zip Code</div>
+        <div class="col-sm-2">Zip Code</div>
+        <div class="col-sm-1">Delete</div>
     </div>
     {% for person in persons %}
         <div class="row">
-            <div class="col-sm-3">{{ person.first_name }}</div>
-            <div class="col-sm-3">{{ person.last_name }}</div>
+            <div class="col-sm-3">
+                <a href="{% url 'persons:update' person.id %}">{{ person.first_name }}</a>
+            </div>
+            <div class="col-sm-3">
+                <a href="{% url 'persons:update' person.id %}">{{ person.last_name }}</a>
+            </div>
             <div class="col-sm-3">{{ person.date_of_birth }}</div>
-            <div class="col-sm-3">{{ person.zip_code }}</div>
+            <div class="col-sm-2">{{ person.zip_code }}</div>
+            <div class="col-sm-1 text-sm-center">
+                <a href="{% url 'persons:delete' person.id %}">
+                    <span class="close black"></span>
+                </a>
+            </div>
         </div>
     {% endfor %}
+{% endblock %}
+
+
+{% block extra_style %}
+<style type="text/css">
+
+.close {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-right: 50%;
+}
+.close.black::before, .close.black::after {
+    height: 8px;
+    margin-top: -4px;
+}
+.close::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.close::before, .close::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #000;
+}
+.close.black::before, .close.black::after {
+    height: 8px;
+    margin-top: -4px;
+}
+.close::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.close::before, .close::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #000;
+}
+
+</style>
 {% endblock %}

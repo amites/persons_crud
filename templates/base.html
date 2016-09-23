@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <title>{% block title %}Persons{% endblock %}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" crossorigin="anonymous">
+    {% block extra_style %}{% endblock %}
 </head>
 <body>
-    {% block content %}{% endblock %}
 
-    {% block scripts %}
-        <script src="https://npmcdn.com/vue/dist/vue.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    {% endblock %}
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'persons:list' %}">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'persons:create' %}">Create</a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Persons CRUD</h3>
+    </div>
+
+    {% block content %}{% endblock %}
+</div>
+{% block scripts %}
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" crossorigin="anonymous"></script>
+{% endblock %}
 </body>
 </html>
