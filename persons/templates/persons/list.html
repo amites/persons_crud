@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{#        div.row*2>div.col-sm-3*4#}
+    <div class="row">
+        <div class="col-sm-3">First Name</div>
+        <div class="col-sm-3">Last Name</div>
+        <div class="col-sm-3">Date of Birth</div>
+        <div class="col-sm-3">Zip Code</div>
+    </div>
+    {% for person in persons %}
+        <div class="row">
+            <div class="col-sm-3">{{ person.first_name }}</div>
+            <div class="col-sm-3">{{ person.last_name }}</div>
+            <div class="col-sm-3">{{ person.date_of_birth }}</div>
+            <div class="col-sm-3">{{ person.zip_code }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}
