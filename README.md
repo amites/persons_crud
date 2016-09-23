@@ -9,7 +9,7 @@ To use:
  - `cd persons_crud`
  - `python manage.py migrate` # this sets up a local database using SQLite
  - `python manage.py runserver`
- - Open http://localhost:8000 in your browser
+ - Open [http://localhost:8000](http://localhost:8000) in your browser
 
 
 Code base missing tests due to time contraints and the simplistic nature of this sample.
